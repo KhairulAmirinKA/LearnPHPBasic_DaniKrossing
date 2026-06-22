@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <form action="includes/form_handler.php" method="POST">
+    <form action="../includes/form_handler.php" method="POST">
 
         <label for="firstname">Firstname</label>
         <input name="firstname" type="text" id="firstname" placeholder="first Name" /> <br><br>
