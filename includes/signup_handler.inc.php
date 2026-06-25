@@ -35,12 +35,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $statement -> execute();
         */
 
-        
+
         // after execution, we close the connection
         $pdo = null;
         $statement = null;
 
-        header("Location: ../web/signup_form.php");
+        header("Location: ../crud_user/signup_form.php");
         die();
 
     } catch (PDOException $e) {
@@ -50,5 +50,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 
 else{
-    header("Location: ../web/signup_form.php");
+    header("Location: ../crud_user/signup_form.php");
 }
