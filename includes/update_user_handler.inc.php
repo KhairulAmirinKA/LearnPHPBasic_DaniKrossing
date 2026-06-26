@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
     try {
         // import from this file
-        require_once "dbhost.inc.php";
+        require_once __DIR__ . "/dbhost.inc.php";
 
         // insert into DB
         // method 1
