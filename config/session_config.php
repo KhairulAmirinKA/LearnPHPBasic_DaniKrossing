@@ -22,6 +22,7 @@ session_set_cookie_params(
 );
 
 
+// start session
 session_start();
 
 

@@ -37,9 +37,13 @@ try {
 
     }
 
+    // import config file to start session
+    require_once __DIR__ . "/../config/session_config.php";
 
     // if there are errors
-   
+    if ($errors){
+        $_SESSION["errors_signup"] = $errors;
+    }
 
 } catch (PDOException $e) {
     echo "Connection failed. " . $e -> getMessage();
