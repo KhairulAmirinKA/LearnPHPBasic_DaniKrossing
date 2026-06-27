@@ -1,3 +1,9 @@
+<?php
+
+require_once __DIR__ . "/../config/session_config.php";
+require_once __DIR__ . "/signup_view.inc.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +21,10 @@
         div {
             margin-top: 2rem;
             border: 1px solid black;
+        }
+
+        .form-error {
+            color: red;
         }
     </style>
 </head>
@@ -38,6 +48,13 @@
             <button type="submit" name="submit">Signup</button>
 
         </form>
+
+        <?php
+
+        // function from signup_view
+        check_signup_errors();
+        ?>
+        
     </div>
 
 
@@ -56,6 +73,9 @@
 
         </form>
     </div>
+
+
+
 </body>
 
 </html>
