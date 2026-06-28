@@ -54,6 +54,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             die();
         }
+
+
+        // new session ID
+        $newSessionId = session_create_id();
+
+        // result[id] is user ID
+        $sessionId = $newSessionId . "_" . $result['id'];
+
+        session_id($sessionId);
+
+        // store in session
+        $_SESSION['user_id'] = $result['id'];
+        $_SESSION['user_username'] = htmlspecialchars( $result['username']);
+        $_SESSION['last_regeneration'] = time();
+
     } catch (PDOException $e) {
         die("Connection failed " . $e->getMessage());
     }
