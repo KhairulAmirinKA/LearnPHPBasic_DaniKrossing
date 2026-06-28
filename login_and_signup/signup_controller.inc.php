@@ -48,5 +48,6 @@ function is_email_registered(object $pdo, string $email)
 function create_user(object $pdo, string $username, string $password, string $email)
 {
 
-    create_user($pdo, $username, $password, $email);
+    // call function from signup_model
+    set_user($pdo, $username, $password, $email);
 }
