@@ -2,6 +2,7 @@
 
 require_once __DIR__ . "/../config/session_config.php";
 require_once __DIR__ . "/signup_view.inc.php";
+require_once __DIR__ . "/login_view.inc.php"
 ?>
 
 <!DOCTYPE html>
@@ -76,6 +77,12 @@ require_once __DIR__ . "/signup_view.inc.php";
             <button type="submit" name="submit">Login</button>
 
         </form>
+
+        <?php 
+
+        // from login_view
+        check_login_errors();
+         ?>
     </div>
 
 
