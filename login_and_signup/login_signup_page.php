@@ -85,7 +85,14 @@ require_once __DIR__ . "/login_view.inc.php"
          ?>
     </div>
 
+    <div>
+        <h1>Logout user</h1>
 
+        <form action="logout.inc.php" method="POST">
+            <button>Logout</button>
+        </form>
+        
+    </div>
 
 </body>
 
