@@ -19,4 +19,9 @@ function check_login_errors()
 
         unset($_SESSION['login_errors']);
     }
+
+    // login_signup_page.php?login=success
+    else if (isset($_GET['login']) && $_GET['login']==='success'){
+        echo "<p class='form-success'>Login success</p>";
+    }
 }

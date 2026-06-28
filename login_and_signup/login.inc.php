@@ -69,6 +69,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['user_username'] = htmlspecialchars( $result['username']);
         $_SESSION['last_regeneration'] = time();
 
+
+        // after ok, go to success
+        header("Location: login_signup_page.php?login=success");
+
+
+        // closing
+        $pdo = null;
+        $statement = null;
+        
+        die();
+
     } catch (PDOException $e) {
         die("Connection failed " . $e->getMessage());
     }
