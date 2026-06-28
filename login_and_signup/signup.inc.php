@@ -41,7 +41,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["errors_signup"] = $errors;
 
             header("Location: login_signup_page.php");
+
+            // dont forget to exit script
+            die();
         }
+
+
+        // call create_user from controller
+        create_user($pdo, $username, $password, $email);
+
+
+        // after finish
+        header("Location: login_signup_page.php?signup=success");
+
+        $pdo = null;
+        
+        // exit script
+        die();
+
     } catch (PDOException $e) {
         echo "Connection failed. " . $e->getMessage();
     }

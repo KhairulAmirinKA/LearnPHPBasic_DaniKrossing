@@ -22,4 +22,10 @@ function check_signup_errors()
         // after finishing everything, no need to store session variable
         unset($_SESSION['errors_signup']);
     }
+
+
+    // login_signup_page.php?signup=success
+    else if (isset($_GET["signup"]) && $_GET['signup'] === 'success'){
+        echo "<p class='form-success'>Signup success</p>";
+    }
 }

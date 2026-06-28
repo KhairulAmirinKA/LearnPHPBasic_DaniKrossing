@@ -26,6 +26,10 @@ require_once __DIR__ . "/signup_view.inc.php";
         .form-error {
             color: red;
         }
+        
+        .form-success {
+            color: green;
+        }
     </style>
 </head>
 
