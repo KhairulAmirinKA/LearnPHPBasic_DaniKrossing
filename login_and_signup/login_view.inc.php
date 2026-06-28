@@ -25,3 +25,14 @@ function check_login_errors()
         echo "<p class='form-success'>Login success</p>";
     }
 }
+
+
+function display_username(){
+
+    if (isset($_SESSION['user_id'])){
+        echo "You logged in as " . $_SESSION['user_username'];
+    }
+    else{
+        echo "Not logged in";
+    }
+}

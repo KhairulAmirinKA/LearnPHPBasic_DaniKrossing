@@ -19,6 +19,10 @@ require_once __DIR__ . "/login_view.inc.php"
             margin: 0 auto;
         }
 
+        .h1-username{
+            color: green;
+        }
+
         div {
             margin-top: 2rem;
             border: 1px solid black;
@@ -31,10 +35,20 @@ require_once __DIR__ . "/login_view.inc.php"
         .form-success {
             color: green;
         }
+
+        
     </style>
 </head>
 
 <body>
+
+    <h1 class="h1-username">
+        <?php 
+        display_username();
+         ?>
+    </h1>
+
+
     <div class="create-user">
 
         <h1>Signup user</h1>
