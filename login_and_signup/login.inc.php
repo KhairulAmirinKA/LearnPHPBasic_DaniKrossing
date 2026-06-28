@@ -1,7 +1,7 @@
 <?php
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
@@ -16,31 +16,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         //error handlers
         $errors = [];
 
-        if (is_input_empty($username, $password)){
+        if (is_input_empty($username, $password)) {
             $errors['empty_inputs'] = "Please fill in all fields";
         }
+
+
+        // get user from DB
+        $result = get_user($pdo, $username);
+
+        // login with user not exists
+        if (!is_username_exist($result)) {
+            $errors['incorrect_username'] = "Username does not exist";
+        }
+
+        // correct username but wrong password
+        if (
+            is_username_exist($result) &&
+
+            // password is column in DB
+            !is_password_correct($password, $result['password'])
+        ) {
+            $errors['incorrect_password'] = "Wrong password";
+        }
+
 
 
         // session management
         require_once __DIR__ . "/../config/session_config.php";
 
-        if ($errors){
+        if ($errors) {
 
             // store in session
             $_SESSION['login_errors'] = $errors;
 
-             // go to main page
+            // go to main page
             header("Location: login_signup_page.php");
 
             die();
         }
-
     } catch (PDOException $e) {
-        echo "Connection failed " . $e -> getMessage();
+        die("Connection failed " . $e->getMessage());
     }
-}
-
-else{
+} else {
     header("Location: login_signup_page.php");
 
     die();
