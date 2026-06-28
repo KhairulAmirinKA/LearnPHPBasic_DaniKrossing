@@ -5,6 +5,25 @@
 declare(strict_types=1);
 
 
+function signup_inputs()
+{
+
+    if (
+        isset($_SESSION['signup_data']['username']) &&
+        !isset($_SESSION['errors_signup']['username'])
+    ) {
+
+        echo '<input name="username" type="text" id="username" placeholder="first Name"
+value="' . $_SESSION['signup_data']['username'] .  '"/> <br><br>';
+    }
+
+    else{
+        echo '<input name="username" type="text" id="username" placeholder="first Name" /> <br><br>';
+    }
+}
+
+
+
 function check_signup_errors()
 {
 
@@ -15,7 +34,7 @@ function check_signup_errors()
 
 
         // show all errors
-        foreach ($errors as $error){
+        foreach ($errors as $error) {
             echo "<p class='form-error'>" . $error . "</p>";
         }
 
@@ -25,7 +44,7 @@ function check_signup_errors()
 
 
     // login_signup_page.php?signup=success
-    else if (isset($_GET["signup"]) && $_GET['signup'] === 'success'){
+    else if (isset($_GET["signup"]) && $_GET['signup'] === 'success') {
         echo "<p class='form-success'>Signup success</p>";
     }
 }

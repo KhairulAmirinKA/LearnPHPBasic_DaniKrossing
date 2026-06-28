@@ -40,6 +40,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($errors) {
             $_SESSION["errors_signup"] = $errors;
 
+            // store signup data for retry if any error occurs
+            $signupData = [
+                "username" => $username,
+                "email" => $email
+            ];
+
+            // store in session
+            $_SESSION['signup_data'] = $signupData;
+
+
+            // go to main page
             header("Location: login_signup_page.php");
 
             // dont forget to exit script
