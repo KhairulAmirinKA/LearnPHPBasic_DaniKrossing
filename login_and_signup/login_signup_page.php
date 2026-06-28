@@ -19,7 +19,7 @@ require_once __DIR__ . "/login_view.inc.php"
             margin: 0 auto;
         }
 
-        .h1-username{
+        .h1-username {
             color: green;
         }
 
@@ -31,21 +31,19 @@ require_once __DIR__ . "/login_view.inc.php"
         .form-error {
             color: red;
         }
-        
+
         .form-success {
             color: green;
         }
-
-        
     </style>
 </head>
 
 <body>
 
     <h1 class="h1-username">
-        <?php 
+        <?php
         display_username();
-         ?>
+        ?>
     </h1>
 
 
@@ -73,31 +71,41 @@ require_once __DIR__ . "/login_view.inc.php"
         // function from signup_view
         check_signup_errors();
         ?>
-        
+
     </div>
 
 
+    <?php
 
-    <div class="login-user">
-        <h1>Login user</h1>
-        <form action="login.inc.php" method="POST">
+    if (!isset($_SESSION['user_id'])) {
 
-            <label for="username">Username</label>
-            <input name="username" type="text" id="username" placeholder="first Name" /> <br><br>
+    ?>
+        <div class="login-user">
+            <h1>Login user</h1>
+            <form action="login.inc.php" method="POST">
 
-            <label for="password">Password</label>
-            <input type="text" name="password" id="password" placeholder="Password" /> <br><br>
+                <label for="username">Username</label>
+                <input name="username" type="text" id="username" placeholder="first Name" /> <br><br>
 
-            <button type="submit" name="submit">Login</button>
+                <label for="password">Password</label>
+                <input type="text" name="password" id="password" placeholder="Password" /> <br><br>
 
-        </form>
+                <button type="submit" name="submit">Login</button>
 
-        <?php 
+            </form>
 
-        // from login_view
-        check_login_errors();
-         ?>
-    </div>
+            <?php
+
+            // from login_view
+            check_login_errors();
+            ?>
+        </div>
+    <?php
+
+    }
+
+    ?>
+
 
     <div>
         <h1>Logout user</h1>
@@ -105,7 +113,7 @@ require_once __DIR__ . "/login_view.inc.php"
         <form action="logout.inc.php" method="POST">
             <button>Logout</button>
         </form>
-        
+
     </div>
 
 </body>
