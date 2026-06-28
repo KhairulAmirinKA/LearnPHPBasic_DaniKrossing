@@ -34,3 +34,29 @@ function get_email(object $pdo, string $email)
     $result = $statement->fetch(PDO::FETCH_ASSOC);
     return $result;
 }
+
+
+// insert new user to DB
+function set_user(object $pdo, string $username, string $password, string $email)
+{
+
+    $query = "INSERT INTO users(username, password, email) 
+VALUES (:username, :password, :email);";
+
+
+    // hash password
+    $options = [
+        "cost" => 12
+    ];
+
+    $hashedPassword = password_hash($password, PASSWORD_BCRYPT, $options);
+
+
+    $statement = $pdo->prepare($query);
+
+    $statement->bindParam(":username", $username);
+    $statement->bindParam(":password", $hashedPassword);
+    $statement->bindParam(":email", $email);
+
+    $statement->execute();
+}
